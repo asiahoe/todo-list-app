@@ -1,0 +1,173 @@
+@import "bourbon/bourbon";
+@import "base/base";
+@import "base/grid-settings";
+@import "base/variables";
+@import "neat/neat";
+
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+
+body {
+	background-image: url("../images/congruent_outline.png");
+	margin: 25px 0 0;
+}
+
+.container {
+	@include outer-container;
+}
+
+// This entire block seems repetitive. Not sure how I would avoid it.
+
+.high {
+	background-color: $high-priority;
+	color: #fff;
+}
+
+.medium {
+	background-color: $medium-priority;
+}
+
+.low {
+	background-color: $low-priority;
+}
+
+aside {
+	@include span-columns(3);
+	@include padding(1em);
+	background-color: $light-gray;
+	border: $base-border;
+	border-radius: $base-border-radius;
+	margin-bottom: 2em;
+}
+
+form {
+
+	textarea {
+		height: 10em;
+	}
+
+	p {
+		text-align: right;
+	}
+
+	.urgency {
+		@include pad;
+		border: $base-border;
+		border-radius: $base-border-radius;
+		height: 3em;
+		line-height: 2.4em;
+		margin-bottom: .5em;
+		position: relative;
+
+		input[type=radio] {
+			position: absolute;
+				top: .8em;
+				left: .5em;
+		}
+
+		label {
+			cursor: pointer;
+			padding-left: 2em;
+		}
+	}
+
+	.high:hover {
+		background-color: lighten($high-priority, 10);
+	}
+
+	.medium:hover {
+		background-color: lighten($medium-priority, 10);
+	}
+
+	.low:hover {
+		background-color: lighten($low-priority, 10);
+	}
+
+	button {
+		font-family: $base-font-family;
+		font-weight: 700;
+		margin-top: 1em;
+		width: 100%;
+	}
+}
+
+ol {
+	@include span-columns(9);
+
+	li {
+		// Grid View
+		@include span-columns(3 of 9);
+		@include omega(3n);
+		// Standard Styles
+		background-color: $base-background-color;
+		box-shadow: 5px 5px 0 transparentize($dark-gray, .5);
+		border-radius: $base-border-radius;
+		font-size: $h6-font-size;
+		margin-bottom: 1.25em;
+		min-height: 10em;
+		padding: 1em;
+		position: relative;
+
+		span {
+			background-color: $blue;
+			border-radius: 50%;
+			color: #fff;
+			display: block;
+			line-height: 1em;
+			position: absolute;
+				top: 5px;
+				right: 5px;
+			text-align: center;
+			width: 1em;
+			height: 1em;
+		}
+
+		span:hover {
+			background-color: lighten($blue, 10);
+			cursor: pointer;
+		}
+	}
+
+	// Hierarchical View
+
+	/*li:nth-child(1) {
+		@include span-columns(9 of 9);
+	}
+
+	li:nth-child(n+2):nth-child(-n+4) {
+		@include span-columns(3 of 9);
+		@include omega(4n);
+	}
+
+	li:nth-child(n+5) {
+		@include span-columns(2.4);
+		@include omega(9n);
+	}*/
+}
+
+@include media($medium-screen-up) {
+	aside {
+		@include span-columns(4);
+	}
+
+	ol {
+		@include span-columns(4);
+
+		li {
+			@include span-columns(4 of 4);
+		}
+	}
+}
+
+@include media($small-screen-up) {
+	aside {
+		@include span-columns(4);
+	}
+
+	ol {
+		@include span-columns(4);
+
+		li {
+			@include span-columns(4);
+		}
+	}
+}
