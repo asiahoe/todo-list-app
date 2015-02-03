@@ -232,7 +232,7 @@ input[type="submit"] {
   box-sizing: border-box; }
 
 body {
-  background-image: url("../images/congruent_outline.png");
+  background: #333 url("../images/congruent_outline.png") repeat center;
   margin: 25px 0 0; }
 
 .container {
